@@ -10,7 +10,7 @@ class DirectoryController extends Controller
 {
     public function index()
     {
-        $users = User::with('attendance')->orderBy('last_name')->paginate(8);
+        $users = User::with('attendance')->orderBy('last_name')->paginate(20);
         return view('user.directory', compact('users'));
     }
 
