@@ -32,7 +32,7 @@
                             </li>
                         @else
                             <li class="c-link {{ set_active('directory*') }}">
-                                <a href="{{ route('user.home') }}" class="c-link">Member Directory</a>
+                                <a href="{{ route('user.directory') }}" class="c-link">Member Directory</a>
                             </li>
                             @if(Auth::user()->role->name == 'administrator')
                                 <li class="c-link {{ set_active('admin*') }}">

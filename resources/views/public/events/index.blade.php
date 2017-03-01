@@ -12,15 +12,15 @@
         @endslot
     @endcomponent
 
-    <div class="c-content-box c-size-md c-bg-white">
-        <div class="container">
+    @component('layouts.public-layout')
+        @slot('content')
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-10">
                     <div id='events-calendar'></div>
                 </div>
             </div>
-        </div>
-    </div>
+        @endslot
+    @endcomponent
 
 @stop
 

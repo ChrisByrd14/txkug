@@ -9,7 +9,10 @@
         @endslot
     @endcomponent
 
+    @component('layouts.public-layout')
+        @slot('content')
 
-
+        @endslot
+    @endcomponent
 
 @stop
