@@ -65,20 +65,17 @@ class Kernel extends ConsoleKernel
         $schedule->call(function() {
 
             // Find any event schedule for 4 days from today OR scheduled for today
-            $event = Event::with('venue')
-                ->where('event_date', '=', Carbon::today()->addDays(4))
-                ->orWhere('event_date', '=', Carbon::today()->addDays(1))
+            $event = Event::with('venue')->where('event_date', '=', Carbon::today()->addDays(4)->toDateTimeString())
+                ->orWhere('event_date', '=', Carbon::today()->addDays(1)->toDateTimeString())
                 ->orWhere('event_date', '=', Carbon::now()->toDateTimeString())
                 ->orderBy('stops_at')
                 ->first();
 
-            if ( $event->count() > 0 ) {
+            if ($event) {
                 $user = \App\Models\User::find(1);
                 $user->notify(new SendEventReminderToSlack($event));
             }
-
-        })->dailyAt('08:30');
-
+        })->daily();
     }
 
     /**

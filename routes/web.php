@@ -44,6 +44,7 @@ Route::prefix('admin')->middleware('auth:administrator')->group( function() {
 Route::prefix('user')->middleware('auth:all')->group( function() {
     Route::name('user.home')->get('/', 'User\UsersController@home');
     Route::name('user.events')->get('/events', 'User\UsersController@events');
+    Route::name('user.directory')->get('/directory', 'User\DirectoryController@index');
 });
 
 /*

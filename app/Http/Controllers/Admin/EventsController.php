@@ -12,7 +12,6 @@ use File;
 
 class EventsController extends Controller
 {
-
     public function index()
     {
         $events = Event::with('event_type', 'venue', 'attendees')->orderBy('event_date', 'desc')->get();
@@ -55,7 +54,6 @@ class EventsController extends Controller
 
         return redirect()->route('admin.events.show', ['slug' => $event->slug]);
     }
-
 
     public function show(Event $event)
     {
