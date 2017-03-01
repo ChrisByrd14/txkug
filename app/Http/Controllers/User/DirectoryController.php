@@ -13,4 +13,10 @@ class DirectoryController extends Controller
         $users = User::with('attendance')->orderBy('last_name')->get();
         return view('user.directory', compact('users'));
     }
+
+    public function show($slug)
+    {
+        $user = User::with('attendance')->whereSlug($slug)->firstOrFail();
+        return view('user.directory-show', compact('user'));
+    }
 }

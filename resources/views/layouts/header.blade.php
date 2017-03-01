@@ -23,9 +23,7 @@
                         <li class="c-link {{ set_active('events*') }}">
                             <a href="{{ route('events.index') }}" class="c-link">Events</a>
                         </li>
-                        <li class="c-link {{ set_active('blog*') }}">
-                            <a href="{{ route('blog.index') }}" class="c-link">Blog</a>
-                        </li>
+
                         @if (Auth::guest())
                             <li class="c-link">
                                 <a href="{{ route('social.redirect', ['provider' => 'slack']) }}" class="c-link">Sign In</a>
