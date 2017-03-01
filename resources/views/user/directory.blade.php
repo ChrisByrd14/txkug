@@ -12,7 +12,7 @@
         @slot('content')
 
             @foreach ($users as $user )
-            <div class="col-md-4 col-sm-6 c-margin-b-30">
+            <div class="col-md-3 col-sm-6 c-margin-b-30">
                 <div class="c-content-person-1 c-option-2">
                     <div class="c-caption c-content-overlay">
                         <div class="c-overlay-wrapper">
@@ -25,7 +25,7 @@
                                 </a>
                             </div>
                         </div>
-                        <img class="c-overlay-object img-responsive" src="assets/base/img/content/team/team13.jpg" alt=""> </div>
+                        <img class="c-overlay-object img-responsive" src="{{ $user->slack_avatar_192 }}" alt=""> </div>
                     <div class="c-body">
                         <div class="c-head">
                             <div class="c-name c-font-uppercase c-font-bold">{{ $user->name }}</div>
@@ -48,7 +48,11 @@
                             </ul>
                         </div>
                         <div class="c-position">{{ $user->slack_title }}</div>
-                        <p>BIO</p>
+                        <p>
+                            BIO: Tolerare unus ducunt ad brevis buxum. Est alter buxum, cesaris. Eheu, lura!
+                            Racanas crescere in emeritis oenipons! Ubi est rusticus repressor? Lixa grandis clabulare est.
+                            Eposs tolerare, tanquam fatalis.
+                        </p>
                     </div>
                 </div>
             </div>
