@@ -11,7 +11,7 @@
     @component('layouts.public-layout')
         @slot('content')
 
-            @foreach($users->chunk(8) as $chunked_users)
+            @foreach($users->chunk(6) as $chunked_users)
                 <div class="row">
                     @foreach ($chunked_users as $user )
                         <div class="col-md-2 col-sm-6 c-margin-b-25">
