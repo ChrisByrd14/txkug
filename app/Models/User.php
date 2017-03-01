@@ -15,6 +15,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
     protected $table = 'users';
 
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
     public function sluggable()
     {
         return [

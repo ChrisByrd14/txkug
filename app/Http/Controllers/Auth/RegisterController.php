@@ -23,7 +23,7 @@ class RegisterController extends Controller
     |
     */
 
-    use RegistersUsers, ActivationTrait, CaptchaTrait;
+    use RegistersUsers, CaptchaTrait;
 
     /**
      * Where to redirect users after login / registration.
