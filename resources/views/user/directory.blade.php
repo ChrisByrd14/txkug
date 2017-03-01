@@ -47,8 +47,8 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="c-position"> CEO, Mockingbird </div>
-                        <p> Lorem ipsum dolor sit amet, dolor nemo amet elit. Nulla nemo consequuntur. </p>
+                        <div class="c-position">{{ $user->slack_title }}</div>
+                        <p>BIO</p>
                     </div>
                 </div>
             </div>
