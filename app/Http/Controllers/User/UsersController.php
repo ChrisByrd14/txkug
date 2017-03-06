@@ -12,10 +12,8 @@ use Carbon\Carbon;
 class UsersController extends Controller
 {
     public function home() {
-
         $user = User::with('role', 'attendance')->findOrFail(Auth::id());
         return view('user.home', compact('user'));
-
     }
 
     public function events() {

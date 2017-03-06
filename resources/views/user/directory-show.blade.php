@@ -21,11 +21,13 @@
 
             <div class="row">
                 <div class="col-md-3">
-                    <img src="{{ $user->slack_avatar_192 }}" class="img-responsive">
+                    <div class="c-bg-img-center" data-height="height" style="height: 250px; background-image: url({{ $user->slack_avatar_192 }});"></div>
+                    {{--<img src="{{ $user->slack_avatar_192 }}" class="img-responsive">--}}
                 </div>
 
                 <div class="col-md-9">
                     <p>
+                        
                         Slack handle: {{ '@' . $user->slack_handle }}<br />
                         @if ( $user->slack_title  ) Slack Title: {{ $user->slack_title }} <br /> @endif
                         Email: <a href="mailto:{{ $user->email }}">{{ $user->email }}</a><br />
