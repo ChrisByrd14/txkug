@@ -176,6 +176,7 @@ return [
         Illuminate\Notifications\NotificationServiceProvider::class,
         Lisennk\Laravel\SlackWebApi\Providers\SlackApiServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
+        UxWeb\SweetAlert\SweetAlertServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -240,7 +241,8 @@ return [
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Gravatar' => Creativeorange\Gravatar\Facades\Gravatar::class,
         'SlackApi' => \Lisennk\Laravel\SlackWebApi\Facades\SlackApi::class,
-        'Image' => Intervention\Image\Facades\Image::class
+        'Image' => Intervention\Image\Facades\Image::class,
+        'Alert' => UxWeb\SweetAlert\SweetAlert::class,
     ],
 
 ];

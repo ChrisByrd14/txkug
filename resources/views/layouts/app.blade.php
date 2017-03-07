@@ -27,6 +27,7 @@
         <link href="{{ asset('assets/plugins/owl-carousel/assets/owl.carousel.css') }}" rel="stylesheet" />
         <link href="{{ asset('assets/plugins/fancybox/jquery.fancybox.css') }}" rel="stylesheet" />
         <link href="{{ asset('assets/plugins/slider-for-bootstrap/css/slider.css') }}" rel="stylesheet" />
+        <link href="{{ asset('assets/plugins/sweetalert/dist/sweetalert.css') }}" rel="stylesheet" />
 
         <link href="{{ asset('assets/base/css/plugins.css') }}" rel="stylesheet"  />
         <link href="{{ asset('assets/base/css/components.css') }}" id="style_components" rel="stylesheet" />
@@ -41,7 +42,7 @@
         @yield('header_scripts')
     </head>
 
-    <body class="c-layout-header-fixed c-layout-header-mobile-fixed">
+        <body class="c-layout-header-fixed c-layout-header-mobile-fixed">
 
         @include('layouts.header')
 
@@ -75,6 +76,9 @@
         <script src="{{ asset('assets/plugins/fancybox/jquery.fancybox.pack.js') }}" type="text/javascript"></script>
         <script src="{{ asset('assets/plugins/smooth-scroll/jquery.smooth-scroll.js') }}" type="text/javascript"></script>
         <script src="{{ asset('assets/plugins/slider-for-bootstrap/js/bootstrap-slider.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('assets/plugins/sweetalert/dist/sweetalert.min.js') }}" type="text/javascript"></script>
+
+        @include('sweet::alert')
 
         <script src="{{ asset('assets/base/js/components.js') }}" type="text/javascript"></script>
         <script src="{{ asset('assets/base/js/components-shop.js') }}" type="text/javascript"></script>

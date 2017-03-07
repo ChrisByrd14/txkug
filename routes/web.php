@@ -65,7 +65,10 @@ Route::prefix('api')->middleware('auth:all')->group( function () {
     Route::name('api.event-checkin')->post('/event', 'API\EventController@eventCheckIn');
     Route::name('api.get-participants')->get('/event/{id}', 'API\EventController@getParticipants');
     Route::name('api.set-role')->post('/user', 'API\UserController@setRole');
+
 });
+
+Route::name('api.slack-invite-request')->post('/api/slack-invite-request', 'API\SlackInviteController@processSlackInviteRequest');
 
 /*
 |--------------------------------------------------------------------------
