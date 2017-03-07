@@ -4828,7 +4828,7 @@ h1 {
   background: #ffffff; }
 
 .c-layout-revo-slider {
-  overflow-x: hidden; }
+  overflow: hidden; }
   .c-layout-revo-slider:before,
   .c-layout-revo-slider:after {
     content: " ";
