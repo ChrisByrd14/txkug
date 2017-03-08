@@ -31,13 +31,13 @@
                 <div class="c-content-step-1 c-opt-1">
                     <div class="c-icon">
                         <span class="c-hr c-hr-first">
-                            <span class="c-content-line-icon c-icon-14 c-theme"></span>
+                            <span class="c-content-line-icon c-icon-31 c-theme"></span>
                         </span>
                     </div>
                     <div class="c-title c-font-20 c-font-bold c-font-uppercase">TO LEAD</div>
                     <div class="c-description c-font-17">
-                        TXKUG is for IT area leaders and those aspiring to leadership to meet to discuss relevant issues,
-                        learn about new technology from vendors, and discuss ongoing IT projects in their respective organizations.
+                        TXKUG provides a forum for IT leaders to discuss relevant issues,
+                        new technology, and discuss ongoing IT projects in their respective organizations.
                     </div>
                 </div>
             </div>
@@ -46,13 +46,13 @@
                 <div class="c-content-step-1 c-opt-1">
                     <div class="c-icon">
                         <span class="c-hr">
-                            <span class="c-content-line-icon c-icon-21 c-theme"></span>
+                            <span class="c-content-line-icon c-icon-13 c-theme"></span>
                          </span>
                     </div>
                     <div class="c-title c-font-20 c-font-bold c-font-uppercase">TO MENTOR</div>
                     <div class="c-description c-font-17">
                         To be a source of mentorship for members, especially ones who are the sole IT services provider
-                        for their organization and for students in an IT-related field.\
+                        for their organization and for students in an IT-related field.
                     </div>
                 </div>
             </div>
@@ -61,7 +61,7 @@
                 <div class="c-content-step-1 c-opt-1">
                     <div class="c-icon">
                         <span class="c-hr c-hr-last">
-                            <span class="c-content-line-icon c-icon-32 c-theme"></span>
+                            <span class="c-content-line-icon c-icon-1 c-theme"></span>
                         </span>
                     </div>
                     <div class="c-title c-font-20 c-font-bold c-font-uppercase">TO SERVE</div>

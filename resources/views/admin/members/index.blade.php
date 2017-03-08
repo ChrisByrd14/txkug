@@ -10,7 +10,7 @@
 
     @component('sections.breadcrumbs')
         @slot('title')
-            Users
+            Members
         @endslot
     @endcomponent
 
@@ -19,7 +19,7 @@
         @slot('content')
 
             <div class="c-content-title-1">
-                <h3 class="c-font-uppercase c-font-bold">User List</h3>
+                <h3 class="c-font-uppercase c-font-bold">Member Directory</h3>
             </div>
             <div class="c-content-divider c-divider-sm c-theme-bg"></div>
 
@@ -33,20 +33,20 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach ($users as $user)
+                @foreach ($members as $member)
                     <tr>
                         <td>
-                            <img class="img-circle c-margin-r-40" src="{{ $user->slack_avatar_32 }}">
+                            <img class="img-circle c-margin-r-40" src="{{ $member->slack_avatar_32 }}">
                         </td>
                         <td>
-                            <a href="{{ route('admin.users.show', $user->slug) }}">{{ $user->last_name }}, {{ $user->first_name }}</a>
+                            <a href="{{ route('admin.members.show', $member->slug) }}">{{ $member->last_name }}, {{ $member->first_name }}</a>
                         </td>
-                        <td class="c-center">{{ title_case($user->role->name ) }}</td>
+                        <td class="c-center">{{ title_case($member->role->name ) }}</td>
                         <td class="c-center">
-                            {{ $user->created_at->format('m-d-Y') }}
+                            {{ $member->created_at->format('m-d-Y') }}
                         </td>
                         <td class="c-center">
-                            {{ $user->attendance->count() }}
+                            {{ $member->attendance->count() }}
                         </td>
                     </tr>
                 @endforeach

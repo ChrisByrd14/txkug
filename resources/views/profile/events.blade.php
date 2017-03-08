@@ -4,11 +4,11 @@
 
     @component('sections.breadcrumbs')
         @slot('title')
-            My Account
+            {{ Auth::user()->name }}
         @endslot
     @endcomponent
 
-    @component('layouts.user-layout')
+    @component('layouts.profile-layout')
 
         @slot('content')
 
@@ -17,8 +17,8 @@
             </div>
             <div class="c-content-divider c-divider-sm c-theme-bg"></div>
 
-            @if ($user->attendance->count() > 0 )
-                <h4>You have attended {{ $user->attendance->count() }} {{ str_plural('event', $user->attendance->count()) }}</h4>
+            @if ($member->attendance->count() > 0 )
+                <h4>You have attended {{ $member->attendance->count() }} {{ str_plural('event', $member->attendance->count()) }}</h4>
 
                 <div class="table-responsive">
                     <table id='events-table' class="table table-hover table-striped table-bordered table-hover">
@@ -30,7 +30,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                            @foreach ($user->attendance as $attendance)
+                            @foreach ($member->attendance as $attendance)
                                 <tr>
                                     <td>{{ $attendance->events->event_date->format('Y-m-d') }}</td>
                                     <td>{{ $attendance->events->event_type->event_type }}</td>

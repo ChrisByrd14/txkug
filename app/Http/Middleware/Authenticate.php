@@ -44,7 +44,7 @@ class Authenticate
 
         if( $this->auth->guest() || !$this->auth->user()->hasRole($role))
         {
-            return redirect()->to('/user');
+            return redirect()->to('/member');
         }
 
         return $next($request);

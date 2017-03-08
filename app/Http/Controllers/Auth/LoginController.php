@@ -59,19 +59,19 @@ class LoginController extends Controller
             'password'  => $password
         ], $remember == 1 ? true : false)) {
 
-            return redirect()->route('user.home');
+//            return redirect()->route('member.home');
 
-//            if ( $this->auth->user()->hasRole('user')) {
-//
-//                return redirect()->route('user.home');
-//
-//            }
+            if ( $this->auth->user()->hasRole('member')) {
 
-//            if ( $this->auth->user()->hasRole('administrator')) {
-//
-//                return redirect()->route('user.home');
-//
-//            }
+                return redirect()->route('member.home');
+
+            }
+
+            if ( $this->auth->user()->hasRole('administrator')) {
+
+                return redirect()->route('admin.home');
+
+            }
 
         }
         else {

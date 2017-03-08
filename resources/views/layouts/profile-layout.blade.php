@@ -11,12 +11,12 @@
         </div>
 
         <ul class="c-sidebar-menu collapse c-option-2" id="user-sidebar-menu">
-            <li class="{{ set_sidebar_active('user') }}">
-                <a href="{{ route('user.home') }}">My Profile</a>
+            <li class="{{ set_sidebar_active( Auth::user()->slack_handle ) }}">
+                <a href="/{{ Auth::user()->slack_handle }}">My Profile</a>
             </li>
 
-            <li class="{{ set_sidebar_active('user/events*') }}">
-                <a href="{{ route('user.events') }}">My Events</a>
+            <li class="{{ set_sidebar_active( Auth::user()->slack_handle . '/my-events*') }}">
+                <a href="/{{ Auth::user()->slack_handle }}/my-events">My Events</a>
             </li>
 
         </ul>

@@ -15,8 +15,8 @@
                 <a href="{{ route('admin.home') }}">Dashboard</a>
             </li>
 
-            <li class="{{ set_sidebar_active('admin/users*') }}">
-                <a href="{{ route('admin.users.index') }}">Users</a>
+            <li class="{{ set_sidebar_active('admin/members*') }}">
+                <a href="{{ route('admin.members.index') }}">Members</a>
             </li>
 
             <li class="c-dropdown {{ set_sidebar_active('admin/venues*') }}">

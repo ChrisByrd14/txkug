@@ -8,6 +8,7 @@
         "php": ">=5.6.4",
         "creativeorange/gravatar": "~1.0",
         "cviebrock/eloquent-sluggable": "^4.1",
+        "cviebrock/eloquent-taggable": "^2.1",
         "google/recaptcha": "~1.1",
         "guzzlehttp/guzzle": "^6.2",
         "intervention/image": "^2.3",
