@@ -66,7 +66,7 @@
                                 <div class="panel-body">
                                     <ul class="c-content-list-1 c-theme c-separator-dot">
                                         @foreach ($event->attendees as $attendee )
-                                            <li><a href="/admin/users/{{ $attendee->user->slug }}">{{ $attendee->user->last_name }}, {{ $attendee->user->first_name }}</a></li>
+                                            <li><a href="{{ route('admin.members.show', [$attendee->user->slug])}}">{{ $attendee->user->last_name }}, {{ $attendee->user->first_name }}</a></li>
                                         @endforeach
                                     </ul>
                                 </div>

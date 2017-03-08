@@ -29,18 +29,18 @@
                                 <a href="{{ route('social.redirect', ['provider' => 'slack']) }}" class="c-link">Sign In</a>
                             </li>
                         @else
-                            <li class="c-link {{ set_active('directory*') }}">
-                                <a href="{{ route('user.directory') }}" class="c-link">Member Directory</a>
+                            <li class="c-link {{ set_active('members*') }}">
+                                <a href="{{ route('members.index') }}" class="c-link">Member Directory</a>
+                            </li>
+                            <li class="c-link {{ set_active(Auth::user()->slack_handle . '*') }}">
+                                <a href="/{{ Auth::user()->slack_handle }}" class="c-link">My Profile</a>
                             </li>
                             @if(Auth::user()->role->name == 'administrator')
                                 <li class="c-link {{ set_active('admin*') }}">
                                     <a href="{{ route('admin.home') }}" class="c-link">Admin</a>
                                 </li>
                             @endif
-                            <li class="c-link {{ set_active('user*') }}">
-                                <a href="{{ route('user.home') }}" class="c-link">{{ Auth::user()->name }}</a>
-                            </li>
-                            <li class="c-link">
+                            <li class="c-link">'
                                 <a href="{{ route('authenticated.logout') }}" class="c-link">Logout</a>
                             </li>
                         @endif

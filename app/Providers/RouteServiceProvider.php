@@ -23,7 +23,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Route::pattern('slack_handle', '[A-Za-z]+');
 
         parent::boot();
     }

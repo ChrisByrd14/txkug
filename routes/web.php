@@ -32,27 +32,29 @@ Route::prefix('admin')->middleware('auth:administrator')->group( function() {
     Route::name('admin.home')->get('/', 'Admin\DashboardController@index');
     Route::name('admin')->resource('/venues', 'Admin\VenuesController');
     Route::name('admin')->resource('/events', 'Admin\EventsController');
-    Route::name('admin')->resource('/users', 'Admin\UsersController');
+    Route::name('admin')->resource('/members', 'Admin\MembersController');
 });
 
 /*
 |--------------------------------------------------------------------------
-| Authenticated User Routes
+| Authenticated Member Routes
 |--------------------------------------------------------------------------
 */
 
-// User Profile Routes
+// Member Routes
 
-Route::prefix('user')->middleware('auth:all')->group( function() {
-    Route::name('user.home')->get('/', 'User\UsersController@home');
-    Route::name('user.events')->get('/events', 'User\UsersController@events');
-    Route::name('user.directory')->get('/directory', 'User\DirectoryController@index');
-    Route::name('user.directory.show')->get('/directory/{slug}', 'User\DirectoryController@show');
+Route::prefix('members')->middleware('auth:all')->group( function() {
+    Route::name('members.index')->get('/', 'Members\DirectoryController@index');
+    Route::name('members.show')->get('/{slug}', 'Members\DirectoryController@show');
 });
 
+// Profile Routes
+// {slack_handle} Global Route Constraint defined in RouteServiceProvider
 
-//Route::name('user.directory')->get('/directory', 'User\DirectoryController@index')->middleware('auth:all');
-//Route::name('user.directory.show')->get('/directory/{slug}', 'User\DirectoryController@show')->middleware('auth:all');
+Route::prefix('{slack_handle}')->middleware('auth:all')->group( function() {
+    Route::name('{slack_handle}.index')->get('/', 'Profile\ProfileController@index');
+    Route::name('{slack_handle}.events')->get('/my-events', 'Profile\EventsController@index');
+});
 
 /*
 |--------------------------------------------------------------------------

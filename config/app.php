@@ -169,6 +169,7 @@ return [
         Laravel\Tinker\TinkerServiceProvider::class,
         Spatie\Backup\BackupServiceProvider::class,
         Cviebrock\EloquentSluggable\ServiceProvider::class,
+        Cviebrock\EloquentTaggable\ServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
         Creativeorange\Gravatar\GravatarServiceProvider::class,
         \SocialiteProviders\Manager\ServiceProvider::class,

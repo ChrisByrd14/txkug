@@ -4,11 +4,11 @@
 
     @component('sections.breadcrumbs')
         @slot('title')
-            My Account
+            {{ Auth::user()->name }}
         @endslot
     @endcomponent
 
-    @component('layouts.user-layout')
+    @component('layouts.profile-layout')
 
         @slot('content')
 
@@ -23,16 +23,16 @@
 
             <div class="row">
                 <div class="col-md-3">
-                    <img src="{{ $user->slack_avatar_192 }}" class="img-responsive img-thumbnail">
+                    <img src="{{ $member->slack_avatar_192 }}" class="img-responsive img-thumbnail">
                 </div>
 
                 <div class="col-md-9">
                     <p>
-                        Name: {{ $user->first_name }} {{ $user->last_name }}<br />
-                        Slack handle: {{ '@' . $user->slack_handle }}<br />
-                        @if ( $user->slack_title  ) Slack Title: {{ $user->slack_title }} <br /> @endif
-                        Email: <a href="mailto:{{ $user->email }}">{{ $user->email }}</a><br />
-                        Joined: {{ $user->created_at->format('l d, Y') }}
+                        Name: {{ $member->first_name }} {{ $member->last_name }}<br />
+                        Slack handle: {{ '@' . $member->slack_handle }}<br />
+                        @if ( $member->slack_title  ) Slack Title: {{ $member->slack_title }} <br /> @endif
+                        Email: <a href="mailto:{{ $member->email }}">{{ $member->email }}</a><br />
+                        Joined: {{ $member->created_at->format('l d, Y') }}
                     </p>
                 </div>
             </div>

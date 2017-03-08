@@ -115,17 +115,17 @@ class SlackController extends Controller
 
         auth()->login($slackUser, true);
 
-        if ( auth()->user()->role('user')) {
+        if ( auth()->user()->hasRole('administrator')) {
 
-            return redirect()->route('user.home');
-
+            return redirect()->route('admin.home');
         }
+//        else
+//        if ( auth()->user()->hasRole('member')) {
 
-        if ( auth()->user()->role('administrator')) {
+            return redirect()->route('{slack_handle}.index', ['slack_handle' => auth()->user()->slack_handle]);
 
-            return redirect()->route('user.home');
+//        }
 
-        }
 
         return abort(500, 'User has no Role assigned, role is obligatory! You did not seed the database with the roles.');
 

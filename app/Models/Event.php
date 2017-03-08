@@ -6,10 +6,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Collective\Html\Eloquent\FormAccessible;
 use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Cviebrock\EloquentTaggable\Taggable;
 
 class Event extends Model
 {
-    use SoftDeletes, FormAccessible, Sluggable, SluggableScopeHelpers;
+    use SoftDeletes, FormAccessible, Sluggable, SluggableScopeHelpers, Taggable;
 
     protected $table = 'events';
 

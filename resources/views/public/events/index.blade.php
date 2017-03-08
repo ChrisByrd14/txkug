@@ -32,12 +32,13 @@
             $('#events-calendar').fullCalendar({
                 height: 600,
                 header: {
-                    left: 'title',
+                    left: 'month,agendaWeek,agendaDay',
+                    center: 'title',
                     right: 'prev, next today'
                 },
                 navLinks: true, // can click day/week names to navigate views
                 editable: false,
-                eventLimit: false, // allow "more" link when too many events
+                eventLimit: true, // allow "more" link when too many events
                 events: [
                         @foreach ($events as $event)
                     {
