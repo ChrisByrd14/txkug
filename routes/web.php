@@ -45,7 +45,14 @@ Route::prefix('admin')->middleware('auth:administrator')->group( function() {
 
 Route::prefix('members')->middleware('auth:all')->group( function() {
     Route::name('members.index')->get('/', 'Members\DirectoryController@index');
+
+    Route::name('members.community-links.index')->get('/community-links', 'Members\CommunityLinksController@index');
+    Route::name('members.community-links.store')->post('/community-links', 'Members\CommunityLinksController@store');
+    Route::name('members.community-links.channel')->get('/community-links/{channel}', 'Members\CommunityLinksController@index');
+    Route::name('members.community-links.votes.store')->post('/community-links/votes/{link}', 'Members\CommunityLinksVotesController@store');
+
     Route::name('members.show')->get('/{slug}', 'Members\DirectoryController@show');
+//    Route::name('members.directory.show')->get('/directory/{slug}', 'Members\DirectoryController@show');
 });
 
 // Profile Routes
@@ -66,8 +73,7 @@ Route::prefix('api')->middleware('auth:all')->group( function () {
     Route::name('api.fetch-event')->get('/event', 'API\EventController@fetchEvent');
     Route::name('api.event-checkin')->post('/event', 'API\EventController@eventCheckIn');
     Route::name('api.get-participants')->get('/event/{id}', 'API\EventController@getParticipants');
-    Route::name('api.set-role')->post('/user', 'API\UserController@setRole');
-
+//    Route::name('api.set-role')->post('/member', 'API\UserController@setRole');
 });
 
 Route::name('api.slack-invite-request')->post('/api/slack-invite-request', 'API\SlackInviteController@processSlackInviteRequest');
@@ -82,7 +88,7 @@ Route::name('api.slack-invite-request')->post('/api/slack-invite-request', 'API\
 //    Mail::send('mail.test', [], function ($message) {
 //        $message
 //            ->from('contact@txkug.com', 'TXKUG Admin')
-//            ->to('stephen.dumas@smith-blair.com', 'Stephen Dumas')
+//            ->to('randy.rankin@smith-blair.com', 'Randy Rankin')
 //            ->subject('From TXKUG with ❤');
 //  });
 //});

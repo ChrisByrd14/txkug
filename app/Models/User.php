@@ -10,6 +10,7 @@ use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Cviebrock\EloquentTaggable\Taggable;
 
+
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract
 {
     use Authenticatable, CanResetPassword, Notifiable, Sluggable, SluggableScopeHelpers, Taggable;
@@ -34,6 +35,17 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
     protected $hidden = ['password', 'remember_token'];
 
+    public function routeNotificationForSlack()
+    {
+        return env('SLACK_WEBHOOK_URL');
+    }
+
+    public function getNameAttribute($value)
+    {
+        $name = $value.$this->first_name. ' ' . $value.$this->last_name;
+        return $name;
+    }
+
     // Each User can attend many events
     public function attendance() {
         return $this->hasMany(
@@ -52,14 +64,22 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return false;
     }
 
-    public function routeNotificationForSlack()
+    public function votes()
     {
-        return env('SLACK_WEBHOOK_URL');
+        $this->belongsToMany(CommunityLink::class, 'community_links_votes')
+            ->withTimestamps();
     }
 
-    public function getNameAttribute($value)
+    public function toggleVoteFor(CommunityLink $link)
     {
-        $name = $value.$this->first_name. ' ' . $value.$this->last_name;
-        return $name;
+        CommunityLinksVote::firstOrNew([
+            'user_id' => auth()->user()->id,
+            'community_link_id' => $link->id,
+        ])->toggle();
+    }
+
+    public function votedFor(CommunityLink $link)
+    {
+        return $link->votes->contains('user_id', $this->id );
     }
 }

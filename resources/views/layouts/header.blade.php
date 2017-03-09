@@ -29,8 +29,11 @@
                                 <a href="{{ route('social.redirect', ['provider' => 'slack']) }}" class="c-link">Sign In</a>
                             </li>
                         @else
-                            <li class="c-link {{ set_active('members*') }}">
-                                <a href="{{ route('members.index') }}" class="c-link">Member Directory</a>
+                            <li class="c-link {{ set_active('members') }}">
+                                <a href="{{ route('members.index') }}" class="c-link">Directory</a>
+                            </li>
+                            <li class="c-link {{ set_active('members/community-links*') }}">
+                                <a href="{{ route('members.community-links.index') }}" class="c-link">Community Links</a>
                             </li>
                             <li class="c-link {{ set_active(Auth::user()->slack_handle . '*') }}">
                                 <a href="/{{ Auth::user()->slack_handle }}" class="c-link">My Profile</a>
