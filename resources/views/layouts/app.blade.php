@@ -7,7 +7,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>{{ config('app.name', 'TXKUG') }}</title>
         <link rel="shortcut icon" href="/favicon.ico" />
 
         <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:300italic,400italic,700italic,400,300,700&amp;subset=all' rel='stylesheet'>
@@ -19,15 +19,10 @@
 
         <link href="{{ asset('assets/plugins/animate/animate.min.css') }}" rel="stylesheet" />
         <link href="{{ asset('assets/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
-
-        <link href="{{ asset('assets/plugins/revo-slider/css/settings.css') }}" rel="stylesheet" />
-        <link href="{{ asset('assets/plugins/revo-slider/css/layers.css') }}" rel="stylesheet" />
-        <link href="{{ asset('assets/plugins/revo-slider/css/navigation.css') }}" rel="stylesheet" />
-        <link href="{{ asset('assets/plugins/cubeportfolio/css/cubeportfolio.min.css') }}" rel="stylesheet" />
-        <link href="{{ asset('assets/plugins/owl-carousel/assets/owl.carousel.css') }}" rel="stylesheet" />
-        <link href="{{ asset('assets/plugins/fancybox/jquery.fancybox.css') }}" rel="stylesheet" />
-        <link href="{{ asset('assets/plugins/slider-for-bootstrap/css/slider.css') }}" rel="stylesheet" />
+        <link href="{{ asset('assets/plugins/bootstrap-switch/css/bootstrap-switch.min.css') }}" rel="stylesheet" />
         <link href="{{ asset('assets/plugins/sweetalert/dist/sweetalert.css') }}" rel="stylesheet" />
+
+        @yield('header_scripts')
 
         <link href="{{ asset('assets/base/css/plugins.css') }}" rel="stylesheet"  />
         <link href="{{ asset('assets/base/css/components.css') }}" id="style_components" rel="stylesheet" />
@@ -39,7 +34,7 @@
                 'csrfToken' => csrf_token(),
             ]) !!};
         </script>
-        @yield('header_scripts')
+
     </head>
 
         <body class="c-layout-header-fixed c-layout-header-mobile-fixed">
@@ -63,29 +58,17 @@
         <script src="{{ asset('assets/plugins/reveal-animate/wow.js') }}" type="text/javascript"></script>
         <script src="{{ asset('assets/base/js/scripts/reveal-animate/reveal-animate.js') }}" type="text/javascript"></script>
 
-        <script src="{{ asset('assets/plugins/revo-slider/js/jquery.themepunch.tools.min.js') }}" type="text/javascript"></script>
-        <script src="{{ asset('assets/plugins/revo-slider/js/jquery.themepunch.revolution.min.js') }}" type="text/javascript"></script>
-        <script src="{{ asset('assets/plugins/revo-slider/js/extensions/revolution.extension.slideanims.min.js') }}" type="text/javascript"></script>
-        <script src="{{ asset('assets/plugins/revo-slider/js/extensions/revolution.extension.layeranimation.min.js') }}" type="text/javascript"></script>
-        <script src="{{ asset('assets/plugins/revo-slider/js/extensions/revolution.extension.navigation.min.js') }}" type="text/javascript"></script>
-        <script src="{{ asset('assets/plugins/revo-slider/js/extensions/revolution.extension.video.min.js') }}" type="text/javascript"></script>
-        <script src="{{ asset('assets/plugins/cubeportfolio/js/jquery.cubeportfolio.min.js') }}" type="text/javascript"></script>
-        <script src="{{ asset('assets/plugins/owl-carousel/owl.carousel.min.js') }}" type="text/javascript"></script>
-        <script src="{{ asset('assets/plugins/counterup/jquery.waypoints.min.js') }}" type="text/javascript"></script>
-        <script src="{{ asset('assets/plugins/counterup/jquery.counterup.min.js') }}" type="text/javascript"></script>
-        <script src="{{ asset('assets/plugins/fancybox/jquery.fancybox.pack.js') }}" type="text/javascript"></script>
         <script src="{{ asset('assets/plugins/smooth-scroll/jquery.smooth-scroll.js') }}" type="text/javascript"></script>
-        <script src="{{ asset('assets/plugins/slider-for-bootstrap/js/bootstrap-slider.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('assets/plugins/bootstrap-switch/js/bootstrap-switch.min.js') }}" type="text/javascript"></script>
         <script src="{{ asset('assets/plugins/sweetalert/dist/sweetalert.min.js') }}" type="text/javascript"></script>
 
         @include('sweet::alert')
 
         <script src="{{ asset('assets/base/js/components.js') }}" type="text/javascript"></script>
-        <script src="{{ asset('assets/base/js/components-shop.js') }}" type="text/javascript"></script>
         <script src="{{ asset('assets/base/js/app.js') }}" type="text/javascript"></script>
         <script>
             $(document).ready(function() {
-                App.init(); // init core
+                App.init(); // init core/**/
             });
         </script>
 

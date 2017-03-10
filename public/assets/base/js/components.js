@@ -437,267 +437,267 @@ var LayoutThemeSettings = function () {
 }();
 // END: Handle Theme Settings
 
-// BEGIN: OwlCarousel
-var ContentOwlcarousel = function () {
-
-	var _initInstances = function () {
-		$("[data-slider='owl'] .owl-carousel").each(function () {
-
-			var parent = $(this);
-
-			var items;
-			var itemsDesktop;
-			var itemsDesktopSmall;
-			var itemsTablet;
-			var itemsTabletSmall;
-			var itemsMobile;
-
-			var rtl_mode = (parent.data('rtl')) ? parent.data('rtl') : false ; 
-			var items_loop = (parent.data('loop')) ? parent.data('loop') : true ; 
-			var items_nav_dots = (parent.data('navigation-dots')) ? parent.data('navigation-dots') : true ; 
-			var items_nav_label = (parent.data('navigation-label')) ? parent.data('navigation-label') : false ; 
-
-			if (parent.data("single-item") == true) {
-				items = 1;
-				itemsDesktop = 1;
-				itemsDesktopSmall = 1;
-				itemsTablet = 1;
-				itemsTabletSmall = 1;
-				itemsMobile = 1;
-			} else {
-				items = parent.data('items');
-				itemsDesktop = parent.data('desktop-items') ? parent.data('desktop-items') : items;
-				itemsDesktopSmall = parent.data('desktop-small-items') ? parent.data('desktop-small-items') : 3;
-				itemsTablet = parent.data('tablet-items') ? parent.data('tablet-items') : 2;
-				itemsMobile = parent.data('mobile-items') ? parent.data('mobile-items') : 1;
-			}
-
-			$(this).owlCarousel({
-
-				rtl: rtl_mode,
-				loop: items_loop,
-				items: items,
-				responsive: {
-					0:{
-						items: itemsMobile
-					},
-					480:{
-						items: itemsMobile
-					},
-					768:{
-						items: itemsTablet
-					},
-					980:{
-						items: itemsDesktopSmall
-					},
-					1200:{
-						items: itemsDesktop
-					}
-				},
-
-				dots: items_nav_dots,
-				nav: items_nav_label,
-				navText: false,
-				autoplay: (parent.data("auto-play")) ? parent.data("auto-play") : true,
-				autoplayTimeout: parent.data('slide-speed'),
-				autoplayHoverPause: (parent.data('auto-play-hover-pause')) ? parent.data('auto-play-hover-pause') : false,
-				dotsSpeed: parent.data('slide-speed'),				
-			});
-		});
-	};
-
-	return {
-
-		//main function to initiate the module
-		init: function () {
-
-			_initInstances();
-		}
-
-	};
-}();
+// // BEGIN: OwlCarousel
+// var ContentOwlcarousel = function () {
+//
+// 	var _initInstances = function () {
+// 		$("[data-slider='owl'] .owl-carousel").each(function () {
+//
+// 			var parent = $(this);
+//
+// 			var items;
+// 			var itemsDesktop;
+// 			var itemsDesktopSmall;
+// 			var itemsTablet;
+// 			var itemsTabletSmall;
+// 			var itemsMobile;
+//
+// 			var rtl_mode = (parent.data('rtl')) ? parent.data('rtl') : false ;
+// 			var items_loop = (parent.data('loop')) ? parent.data('loop') : true ;
+// 			var items_nav_dots = (parent.data('navigation-dots')) ? parent.data('navigation-dots') : true ;
+// 			var items_nav_label = (parent.data('navigation-label')) ? parent.data('navigation-label') : false ;
+//
+// 			if (parent.data("single-item") == true) {
+// 				items = 1;
+// 				itemsDesktop = 1;
+// 				itemsDesktopSmall = 1;
+// 				itemsTablet = 1;
+// 				itemsTabletSmall = 1;
+// 				itemsMobile = 1;
+// 			} else {
+// 				items = parent.data('items');
+// 				itemsDesktop = parent.data('desktop-items') ? parent.data('desktop-items') : items;
+// 				itemsDesktopSmall = parent.data('desktop-small-items') ? parent.data('desktop-small-items') : 3;
+// 				itemsTablet = parent.data('tablet-items') ? parent.data('tablet-items') : 2;
+// 				itemsMobile = parent.data('mobile-items') ? parent.data('mobile-items') : 1;
+// 			}
+//
+// 			$(this).owlCarousel({
+//
+// 				rtl: rtl_mode,
+// 				loop: items_loop,
+// 				items: items,
+// 				responsive: {
+// 					0:{
+// 						items: itemsMobile
+// 					},
+// 					480:{
+// 						items: itemsMobile
+// 					},
+// 					768:{
+// 						items: itemsTablet
+// 					},
+// 					980:{
+// 						items: itemsDesktopSmall
+// 					},
+// 					1200:{
+// 						items: itemsDesktop
+// 					}
+// 				},
+//
+// 				dots: items_nav_dots,
+// 				nav: items_nav_label,
+// 				navText: false,
+// 				autoplay: (parent.data("auto-play")) ? parent.data("auto-play") : true,
+// 				autoplayTimeout: parent.data('slide-speed'),
+// 				autoplayHoverPause: (parent.data('auto-play-hover-pause')) ? parent.data('auto-play-hover-pause') : false,
+// 				dotsSpeed: parent.data('slide-speed'),
+// 			});
+// 		});
+// 	};
+//
+// 	return {
+//
+// 		//main function to initiate the module
+// 		init: function () {
+//
+// 			_initInstances();
+// 		}
+//
+// 	};
+// }();
 // END: OwlCarousel
 
 // BEGIN: ContentCubeLatestPortfolio
-var ContentCubeLatestPortfolio = function () {
-
-	var _initInstances = function () {
-
-		// init cubeportfolio
-		$('.c-content-latest-works').cubeportfolio({
-			filters: '#filters-container',
-			loadMore: '#loadMore-container',
-			loadMoreAction: 'click',
-			layoutMode: 'grid',
-			defaultFilter: '*',
-			animationType: 'quicksand',
-			gapHorizontal: 20,
-			gapVertical: 23,
-			gridAdjustment: 'responsive',
-			mediaQueries: [{
-				width: 1100,
-				cols: 4
-			}, {
-				width: 800,
-				cols: 3
-			}, {
-				width: 500,
-				cols: 2
-			}, {
-				width: 320,
-				cols: 1
-			}],
-			caption: 'zoom',
-			displayType: 'lazyLoading',
-			displayTypeSpeed: 100,
-
-			// lightbox
-			lightboxDelegate: '.cbp-lightbox',
-			lightboxGallery: true,
-			lightboxTitleSrc: 'data-title',
-			lightboxCounter: '<div class="cbp-popup-lightbox-counter">{{current}} of {{total}}</div>',
-
-			// singlePage popup
-			singlePageDelegate: '.cbp-singlePage',
-			singlePageDeeplinking: true,
-			singlePageStickyNavigation: true,
-			singlePageCounter: '<div class="cbp-popup-singlePage-counter">{{current}} of {{total}}</div>',
-			singlePageCallback: function (url, element) {
-				// to update singlePage content use the following method: this.updateSinglePage(yourContent)
-				var t = this;
-
-				$.ajax({
-					url: url,
-					type: 'GET',
-					dataType: 'html',
-					timeout: 5000
-				})
-					.done(function (result) {
-						t.updateSinglePage(result);
-					})
-					.fail(function () {
-						t.updateSinglePage("Error! Please refresh the page!");
-					});
-			},
-		});
-
-		$('.c-content-latest-works-fullwidth').cubeportfolio({
-			loadMoreAction: 'auto',
-			layoutMode: 'grid',
-			defaultFilter: '*',
-			animationType: 'fadeOutTop',
-			gapHorizontal: 0,
-			gapVertical: 0,
-			gridAdjustment: 'responsive',
-			mediaQueries: [{
-				width: 1600,
-				cols: 5
-			}, {
-				width: 1200,
-				cols: 4
-			}, {
-				width: 800,
-				cols: 3
-			}, {
-				width: 500,
-				cols: 2
-			}, {
-				width: 320,
-				cols: 1
-			}],
-			caption: 'zoom',
-			displayType: 'lazyLoading',
-			displayTypeSpeed: 100,
-
-			// lightbox
-			lightboxDelegate: '.cbp-lightbox',
-			lightboxGallery: true,
-			lightboxTitleSrc: 'data-title',
-			lightboxCounter: '<div class="cbp-popup-lightbox-counter">{{current}} of {{total}}</div>',
-		});
-
-	};
-
-	return {
-
-		//main function to initiate the module
-		init: function () {
-			_initInstances();
-		}
-
-	};
-}();
+// var ContentCubeLatestPortfolio = function () {
+//
+// 	var _initInstances = function () {
+//
+// 		// init cubeportfolio
+// 		$('.c-content-latest-works').cubeportfolio({
+// 			filters: '#filters-container',
+// 			loadMore: '#loadMore-container',
+// 			loadMoreAction: 'click',
+// 			layoutMode: 'grid',
+// 			defaultFilter: '*',
+// 			animationType: 'quicksand',
+// 			gapHorizontal: 20,
+// 			gapVertical: 23,
+// 			gridAdjustment: 'responsive',
+// 			mediaQueries: [{
+// 				width: 1100,
+// 				cols: 4
+// 			}, {
+// 				width: 800,
+// 				cols: 3
+// 			}, {
+// 				width: 500,
+// 				cols: 2
+// 			}, {
+// 				width: 320,
+// 				cols: 1
+// 			}],
+// 			caption: 'zoom',
+// 			displayType: 'lazyLoading',
+// 			displayTypeSpeed: 100,
+//
+// 			// lightbox
+// 			lightboxDelegate: '.cbp-lightbox',
+// 			lightboxGallery: true,
+// 			lightboxTitleSrc: 'data-title',
+// 			lightboxCounter: '<div class="cbp-popup-lightbox-counter">{{current}} of {{total}}</div>',
+//
+// 			// singlePage popup
+// 			singlePageDelegate: '.cbp-singlePage',
+// 			singlePageDeeplinking: true,
+// 			singlePageStickyNavigation: true,
+// 			singlePageCounter: '<div class="cbp-popup-singlePage-counter">{{current}} of {{total}}</div>',
+// 			singlePageCallback: function (url, element) {
+// 				// to update singlePage content use the following method: this.updateSinglePage(yourContent)
+// 				var t = this;
+//
+// 				$.ajax({
+// 					url: url,
+// 					type: 'GET',
+// 					dataType: 'html',
+// 					timeout: 5000
+// 				})
+// 					.done(function (result) {
+// 						t.updateSinglePage(result);
+// 					})
+// 					.fail(function () {
+// 						t.updateSinglePage("Error! Please refresh the page!");
+// 					});
+// 			},
+// 		});
+//
+// 		$('.c-content-latest-works-fullwidth').cubeportfolio({
+// 			loadMoreAction: 'auto',
+// 			layoutMode: 'grid',
+// 			defaultFilter: '*',
+// 			animationType: 'fadeOutTop',
+// 			gapHorizontal: 0,
+// 			gapVertical: 0,
+// 			gridAdjustment: 'responsive',
+// 			mediaQueries: [{
+// 				width: 1600,
+// 				cols: 5
+// 			}, {
+// 				width: 1200,
+// 				cols: 4
+// 			}, {
+// 				width: 800,
+// 				cols: 3
+// 			}, {
+// 				width: 500,
+// 				cols: 2
+// 			}, {
+// 				width: 320,
+// 				cols: 1
+// 			}],
+// 			caption: 'zoom',
+// 			displayType: 'lazyLoading',
+// 			displayTypeSpeed: 100,
+//
+// 			// lightbox
+// 			lightboxDelegate: '.cbp-lightbox',
+// 			lightboxGallery: true,
+// 			lightboxTitleSrc: 'data-title',
+// 			lightboxCounter: '<div class="cbp-popup-lightbox-counter">{{current}} of {{total}}</div>',
+// 		});
+//
+// 	};
+//
+// 	return {
+//
+// 		//main function to initiate the module
+// 		init: function () {
+// 			_initInstances();
+// 		}
+//
+// 	};
+// }();
 // END: ContentCubeLatestPortfolio
 
 // BEGIN: CounterUp
-var ContentCounterUp = function () {
-
-	var _initInstances = function () {
-
-		// init counter up
-		$("[data-counter='counterup']").counterUp({
-			delay: 10,
-			time: 1000
-		});
-	};
-
-	return {
-
-		//main function to initiate the module
-		init: function () {
-			_initInstances();
-		}
-
-	};
-}();
+// var ContentCounterUp = function () {
+//
+// 	var _initInstances = function () {
+//
+// 		// init counter up
+// 		$("[data-counter='counterup']").counterUp({
+// 			delay: 10,
+// 			time: 1000
+// 		});
+// 	};
+//
+// 	return {
+//
+// 		//main function to initiate the module
+// 		init: function () {
+// 			_initInstances();
+// 		}
+//
+// 	};
+// }();
 // END: CounterUp
 
 // BEGIN: Fancybox
-var ContentFancybox = function () {
-
-	var _initInstances = function () {
-		// init fancybox
-		$("[data-lightbox='fancybox']").fancybox();
-	};
-
-	return {
-
-		//main function to initiate the module
-		init: function () {
-			_initInstances();
-		}
-
-	};
-}();
+// var ContentFancybox = function () {
+//
+// 	var _initInstances = function () {
+// 		// init fancybox
+// 		$("[data-lightbox='fancybox']").fancybox();
+// 	};
+//
+// 	return {
+//
+// 		//main function to initiate the module
+// 		init: function () {
+// 			_initInstances();
+// 		}
+//
+// 	};
+// }();
 // END: Fancybox
 
 // BEGIN: Twitter
-var ContentTwitter = function () {
-
-	var _initInstances = function () {
-		// init twitter
-		if ($(".twitter-timeline")[0]) {
-			!function (d, s, id) {
-				var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
-				if (!d.getElementById(id)) {
-					js = d.createElement(s);
-					js.id = id;
-					js.src = p + "://platform.twitter.com/widgets.js";
-					fjs.parentNode.insertBefore(js, fjs);
-				}
-			}(document, "script", "twitter-wjs");
-		}
-	};
-
-	return {
-
-		//main function to initiate the module
-		init: function () {
-			_initInstances();
-		}
-
-	};
-}();
+// var ContentTwitter = function () {
+//
+// 	var _initInstances = function () {
+// 		// init twitter
+// 		if ($(".twitter-timeline")[0]) {
+// 			!function (d, s, id) {
+// 				var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+// 				if (!d.getElementById(id)) {
+// 					js = d.createElement(s);
+// 					js.id = id;
+// 					js.src = p + "://platform.twitter.com/widgets.js";
+// 					fjs.parentNode.insertBefore(js, fjs);
+// 				}
+// 			}(document, "script", "twitter-wjs");
+// 		}
+// 	};
+//
+// 	return {
+//
+// 		//main function to initiate the module
+// 		init: function () {
+// 			_initInstances();
+// 		}
+//
+// 	};
+// }();
 // END: Twitter
 
 
@@ -718,86 +718,86 @@ function isScrolledIntoView(elem)
 // END : SCROLL TO VIEW FUNCTION
 
 // BEGIN : PROGRESS BAR 
-var LayoutProgressBar = function ($) {
-
-    return {
-        init: function () {
-        	var id_count = 0; // init progress bar id number
-        	$('.c-progress-bar-line').each(function(){
-        		id_count++; // progress bar id running number
-        		// build progress bar class selector with running id number
-        		var this_id = $(this).attr('data-id', id_count);
-        		var this_bar = '.c-progress-bar-line[data-id="'+id_count+'"]';
-
-        		// build progress bar object key
-        		var progress_data = $(this).data('progress-bar');
-				progress_data = progress_data.toLowerCase().replace(/\b[a-z]/g, function(letter) {
-				    return letter.toUpperCase();
-				});
-				if(progress_data == 'Semicircle') { progress_data = 'SemiCircle'; }
-
-				// grab options
-				var bar_color = $(this).css('border-top-color'); // color	
-				var this_animation = $(this).data('animation'); // animation type : linear, easeIn, easeOut, easeInOut, bounce
-				var stroke_width = $(this).data('stroke-width'); // stroke width
-				var bar_duration = $(this).data('duration'); // duration
-				var trail_width = $(this).data('trail-width'); // trail width
-				var trail_color = $(this).data('trail-color'); // trail color
-				var bar_progress = $(this).data('progress'); // progress value
-				var font_color = $(this).css('color'); // progress font color
-
-				// set default data if options is null / undefinded
-				if (bar_color == 'rgb(92, 104, 115)'){ bar_color = '#32c5d2'; } // set default color 
-				if (trail_color == ''){ trail_color = '#5c6873'; }
-				if (trail_width == ''){ trail_width = '0'; }
-				if (bar_progress == ""){ bar_progress = '1'; }
-				if (stroke_width == ""){ stroke_width = '3'; }
-				if (this_animation == ""){ this_animation = 'easeInOut'; }
-				if (bar_duration == ""){ bar_duration = '1500'; }
-	         
-
-	         	// set progress bar
-	         	var bar = new ProgressBar[progress_data](this_bar, {
-		            strokeWidth: stroke_width,
-		            easing: this_animation,
-		            duration: bar_duration,
-		            color: bar_color,
-		            trailWidth: trail_width,
-		            trailColor: trail_color,
-		            svgStyle: null,		            
-	            	step: function (state, bar) {
-						bar.setText(Math.round(bar.value() * 100) + '%');
-					},									   
-					text: {
-						style: {
-							color: font_color,
-						}
-					},
-		        });
-
-	         	// init animation when progress bar in view without scroll
-	         	var check_scroll = isScrolledIntoView(this_bar); // check if progress bar is in view - return true / false
-			    if (check_scroll == true){
-		        	bar.animate(bar_progress);  // Number from 0.0 to 1.0
-		        }
-		        
-	         	// start progress bar animation upon scroll view
-		        $(window).scroll(function (event) {
-				    var check_scroll = isScrolledIntoView(this_bar); // check if progress bar is in view - return true / false
-				    if (check_scroll == true){
-			        	bar.animate(bar_progress);  // Number from 0.0 to 1.0
-			        }
-				});
-				
-
-        	});
-
-        	
-         
-           
-        }
-    }
-}(jQuery);
+// var LayoutProgressBar = function ($) {
+//
+//     return {
+//         init: function () {
+//         	var id_count = 0; // init progress bar id number
+//         	$('.c-progress-bar-line').each(function(){
+//         		id_count++; // progress bar id running number
+//         		// build progress bar class selector with running id number
+//         		var this_id = $(this).attr('data-id', id_count);
+//         		var this_bar = '.c-progress-bar-line[data-id="'+id_count+'"]';
+//
+//         		// build progress bar object key
+//         		var progress_data = $(this).data('progress-bar');
+// 				progress_data = progress_data.toLowerCase().replace(/\b[a-z]/g, function(letter) {
+// 				    return letter.toUpperCase();
+// 				});
+// 				if(progress_data == 'Semicircle') { progress_data = 'SemiCircle'; }
+//
+// 				// grab options
+// 				var bar_color = $(this).css('border-top-color'); // color
+// 				var this_animation = $(this).data('animation'); // animation type : linear, easeIn, easeOut, easeInOut, bounce
+// 				var stroke_width = $(this).data('stroke-width'); // stroke width
+// 				var bar_duration = $(this).data('duration'); // duration
+// 				var trail_width = $(this).data('trail-width'); // trail width
+// 				var trail_color = $(this).data('trail-color'); // trail color
+// 				var bar_progress = $(this).data('progress'); // progress value
+// 				var font_color = $(this).css('color'); // progress font color
+//
+// 				// set default data if options is null / undefinded
+// 				if (bar_color == 'rgb(92, 104, 115)'){ bar_color = '#32c5d2'; } // set default color
+// 				if (trail_color == ''){ trail_color = '#5c6873'; }
+// 				if (trail_width == ''){ trail_width = '0'; }
+// 				if (bar_progress == ""){ bar_progress = '1'; }
+// 				if (stroke_width == ""){ stroke_width = '3'; }
+// 				if (this_animation == ""){ this_animation = 'easeInOut'; }
+// 				if (bar_duration == ""){ bar_duration = '1500'; }
+//
+//
+// 	         	// set progress bar
+// 	         	var bar = new ProgressBar[progress_data](this_bar, {
+// 		            strokeWidth: stroke_width,
+// 		            easing: this_animation,
+// 		            duration: bar_duration,
+// 		            color: bar_color,
+// 		            trailWidth: trail_width,
+// 		            trailColor: trail_color,
+// 		            svgStyle: null,
+// 	            	step: function (state, bar) {
+// 						bar.setText(Math.round(bar.value() * 100) + '%');
+// 					},
+// 					text: {
+// 						style: {
+// 							color: font_color,
+// 						}
+// 					},
+// 		        });
+//
+// 	         	// init animation when progress bar in view without scroll
+// 	         	var check_scroll = isScrolledIntoView(this_bar); // check if progress bar is in view - return true / false
+// 			    if (check_scroll == true){
+// 		        	bar.animate(bar_progress);  // Number from 0.0 to 1.0
+// 		        }
+//
+// 	         	// start progress bar animation upon scroll view
+// 		        $(window).scroll(function (event) {
+// 				    var check_scroll = isScrolledIntoView(this_bar); // check if progress bar is in view - return true / false
+// 				    if (check_scroll == true){
+// 			        	bar.animate(bar_progress);  // Number from 0.0 to 1.0
+// 			        }
+// 				});
+//
+//
+//         	});
+//
+//
+//
+//
+//         }
+//     }
+// }(jQuery);
 // END : PROGRESS BAR
 
 // BEGIN : COOKIES NOTIFICATION BAR
@@ -864,14 +864,14 @@ $(document).ready(function () {
 	LayoutGo2Top.init();
 	LayoutOnepageNav.init();
 	LayoutThemeSettings.init();
-	LayoutProgressBar.init();
+	// LayoutProgressBar.init();
 	LayoutCookies.init();
 	LayoutSmoothScroll.init();
 
 	// init plugin wrappers
-	ContentOwlcarousel.init();
-	ContentCubeLatestPortfolio.init();
-	ContentCounterUp.init();
-	ContentFancybox.init();
-	ContentTwitter.init();
+	// ContentOwlcarousel.init();
+	// ContentCubeLatestPortfolio.init();
+	// ContentCounterUp.init();
+	// ContentFancybox.init();
+	// ContentTwitter.init();
 });

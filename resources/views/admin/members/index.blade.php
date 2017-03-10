@@ -41,7 +41,13 @@
                         <td>
                             <a href="{{ route('admin.members.show', $member->slug) }}">{{ $member->last_name }}, {{ $member->first_name }}</a>
                         </td>
-                        <td class="c-center">{{ title_case($member->role->name ) }}</td>
+                        <td class="c-center">
+                            @if ( $member->hasRole('administrator') )
+                                <input type="checkbox" id="has-role" data-size="mini" value="{{ $member->id }}" checked="checked" >
+                            @else
+                                <input type="checkbox" id="has-role" data-size="mini" value="{{ $member->id }}">
+                            @endif
+                        </td>
                         <td class="c-center">
                             {{ $member->created_at->format('m-d-Y') }}
                         </td>
@@ -52,10 +58,8 @@
                 @endforeach
                 </tbody>
             </table>
-
         @endslot
     @endcomponent
-
 @stop
 
 @section('footer_scripts')
@@ -65,12 +69,42 @@
     <script src="{{ asset('assets/plugins/datatables/extensions/Responsive/js/responsive.bootstrap.min.js') }}" type="text/javascript"></script>
     <script>
         $(document).ready(function() {
+
             $('#users-table').DataTable({
                 order: [[ 0, "asc" ]],
                 responsive: true,
                 autoWidth: false
             });
-        });
+
+            $("[id='has-role']")
+                .bootstrapSwitch({
+                    onColor: 'danger',
+                    onText: 'Admin',
+                    offColor: 'primary',
+                    offText: 'User'
+                })
+                .on('switchChange.bootstrapSwitch', function(event, state) {
+                    console.log(this.value + ' ' + state);
+
+                    if (state == true) {
+                        var role_id = 2;
+                    } else {
+                        var role_id = 1;
+                    }
+
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                    });
+
+                    $.ajax({
+                        method: 'POST',
+                        url: '{{ route('api.set-role') }}',
+                        data: {'user_id': this.value, 'role_id': role_id },
+                    });
+                });
+            });
     </script>
 @stop
 

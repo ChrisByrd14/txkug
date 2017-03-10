@@ -21,20 +21,22 @@
             </div>
             <div class="c-content-divider c-divider-sm c-theme-bg"></div>
 
-            <table id='events-table' class="table table-hover table-striped display responsive nowrap" cellspacing="0" width="100%">
-                <thead>
-                <tr class="c-theme-bg">
-                    <th class="all c-font-white">Date</th>
-                    <th class="all c-font-white">Event Type</th>
-                    <th class="min-tablet c-font-white">Venue</th>
-                    <th class="min-tablet c-center c-font-white">Attendees</th>
-                </tr>
+            <table id="events-table" class="table table-hover table-striped display responsive nowrap" cellspacing="0" width="100%">
+                <thead class="c-theme-bg">
+                    <tr>
+                        <th class="c-font-white">Date</th>
+                        <th class="c-font-white">Event Type</th>
+                        <th class="c-font-white">Event Title</th>
+                        <th class="c-font-white">Venue</th>
+                        <th class="c-center c-font-white">Attendees</th>
+                    </tr>
                 </thead>
                 <tbody>
                 @foreach ($events as $event)
                     <tr>
-                        <td><a href="/admin/events/{{ $event->slug }}">{{ $event->event_date->format('Y-m-d') }}</a></td>
+                        <td>{{ $event->event_date->format('Y-m-d') }}</td>
                         <td>{{ $event->event_type->event_type }}</td>
+                        <td><a href="/admin/events/{{ $event->slug }}">{{ $event->event_title }}</a></td>
                         <td>{{ $event->venue->venue_name }}</td>
                         <td class="c-center">{{ $event->attendees->count() }}</td>
                     </tr>
@@ -54,8 +56,10 @@
     <script>
         $(document).ready(function() {
             $('#events-table').DataTable({
-                order: [[ 0, "desc" ]],
-                responsive: true
+                order: [[ 0, "asc" ]],
+                lengthMenu: [[25, 50, 100, -1], [25, 50, 100, "All"]],
+                responsive: true,
+                autoWidth: false
             });
         });
     </script>

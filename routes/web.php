@@ -33,6 +33,7 @@ Route::prefix('admin')->middleware('auth:administrator')->group( function() {
     Route::name('admin')->resource('/venues', 'Admin\VenuesController');
     Route::name('admin')->resource('/events', 'Admin\EventsController');
     Route::name('admin')->resource('/members', 'Admin\MembersController');
+    Route::name('admin')->resource('/community-links', 'Admin\CommunityLinksController');
 });
 
 /*
@@ -73,7 +74,8 @@ Route::prefix('api')->middleware('auth:all')->group( function () {
     Route::name('api.fetch-event')->get('/event', 'API\EventController@fetchEvent');
     Route::name('api.event-checkin')->post('/event', 'API\EventController@eventCheckIn');
     Route::name('api.get-participants')->get('/event/{id}', 'API\EventController@getParticipants');
-//    Route::name('api.set-role')->post('/member', 'API\UserController@setRole');
+    Route::name('api.set-role')->post('/member', 'API\MemberController@setRole');
+    Route::name('api.approve-community-link')->post('/community-links', 'API\CommunityLinksController@setApproval');
 });
 
 Route::name('api.slack-invite-request')->post('/api/slack-invite-request', 'API\SlackInviteController@processSlackInviteRequest');
