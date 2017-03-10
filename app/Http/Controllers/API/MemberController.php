@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use Request;
 use DB;
 
-
 class MemberController extends Controller
 {
     public function setRole(Request $request) {
@@ -14,9 +13,11 @@ class MemberController extends Controller
         if(Request::ajax()) {
             $data = Request::all();
 
+            $role = DB::table('roles')->where('name', '=', $data['role_name'])->first();
+
             DB::table('users')
-                ->where('id', '=', $data['user_id'])
-                ->update(array('role_id' => $data['role_id']));
+                ->where('id', '=', $data['id'])
+                ->update(array('role_id' => $role->id));
         }
     }
 }
