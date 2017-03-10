@@ -16,34 +16,33 @@
         @slot('content')
             <div class="row">
                 <div class="col-md-2">
-                    <h1>Channels</h1>
-
-                        <ul class="c-content-list-1 c-theme c-separator-dot">
-                            <li class="c-bg-before-black">
-                                <a href="/members/community-links" class="c-theme-link">
-                                    All Channels
+                    <h3 class="c-font-uppercase c-font-bold">Channels</h3>
+                    <ul class="c-content-list-1 c-theme c-separator-dot">
+                        <li class="c-bg-before-black">
+                            <a href="/members/community-links">
+                                All Channels
+                            </a>
+                        </li>
+                        @foreach ($channels as $channel)
+                            <li class="c-bg-before-{{ $channel->color }}">
+                                <a href="/members/community-links/{{ $channel->slug }}" class="c-theme-link">
+                                    {{ $channel->title }}
                                 </a>
                             </li>
-                            @foreach ($channels as $channel)
-                                <li class="c-bg-before-{{ $channel->color }}">
-                                    <a href="/members/community-links/{{ $channel->slug }}" class="c-theme-link">
-                                        {{ $channel->title }}
-                                    </a>
-                                </li>
-                            @endforeach
-                        </ul>
-
-
+                        @endforeach
+                    </ul>
                 </div>
 
                 <div class="col-md-6">
-                    <div class="nav-justified">
-                        <ul class="nav nav-tabs nav-justified">
-                            <li class="{{ request()->exists('popular') ? '' : 'active' }}"><a href="{{ request()->url() }}">Most Recent</a></li>
-                            <li class="{{ request()->exists('popular') ? 'active' : '' }}"><a href="?popular">Most Popular</a></li>
-                        </ul>
-                        <div class="tab-content">
-                            @include('member.community-links.list')
+                    <div class="c-content-tab-1 c-theme">
+                        <div class="clearfix">
+                            <ul class="nav nav-tabs c-font-uppercase c-font-bold">
+                                <li class="{{ request()->exists('popular') ? '' : 'active' }}"><a href="{{ request()->url() }}">Most Recent</a></li>
+                                <li class="{{ request()->exists('popular') ? 'active' : '' }}"><a href="?popular">Most Popular</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                @include('member.community-links.list')
+                            </div>
                         </div>
                     </div>
                     {!! $links->appends(request()->query())->links('vendor.pagination.bootstrap-4') !!}
