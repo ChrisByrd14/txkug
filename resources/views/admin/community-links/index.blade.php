@@ -26,6 +26,7 @@
                     <tr>
                         <th class="c-font-white c-center">Channel</th>
                         <th class="c-font-white">Title</th>
+                        <th class="none"></th>
                         <th class="c-font-white c-center">Approved</th>
                         <th class="c-font-white">Link</th>
                         <th class="c-font-white">Contributor</th>
@@ -37,11 +38,12 @@
                 <tr>
                     <td>{{ $link->channel->title }}</td>
                     <td>{{ $link->title }}</td>
+                    <td>{{ $link->approved }}</td>
                     <td class="c-center">
                         @if ( $link->approved  == 1 )
-                            <input type="checkbox" id="link-approved" data-size="mini" value="{{ $link->id }}" checked="checked" >
+                            <input type="checkbox" id="link-approved-status" onChange="setLinkApprovalStatus( {{ $link->id }} );" checked="checked" >
                         @else
-                            <input type="checkbox" id="link-approved" data-size="mini" value="{{ $link->id }}">
+                            <input type="checkbox" id="link-approved-status" onChange="setLinkApprovalStatus( {{ $link->id }} );">
                         @endif
                     </td>
                     <td><a href="{{ $link->link }}" target="_blank">{{ $link->link }}</a></td>
@@ -63,42 +65,38 @@
     <script src="{{ asset('assets/plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('assets/plugins/datatables/extensions/Responsive/js/responsive.bootstrap.min.js') }}" type="text/javascript"></script>
     <script>
+
+        function setLinkApprovalStatus(id) {
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            var chkBox = document.getElementById('link-approved-status');
+
+            if ( chkBox.checked) {
+                var link_approved_status = 1;
+            }
+            else {
+                var link_approved_status = 0;
+            }
+
+            $.ajax({
+                method: 'POST',
+                url: '{{ route('api.approve-community-link') }}',
+                data: {'id': id, 'approved': link_approved_status },
+            });
+        }
+
         $(document).ready(function() {
             $('#community-links-table').DataTable({
-                order: [[ 3, "asc" ]],
-                lengthMenu: [[25, 50, 100, -1], [25, 50, 100, "All"]],
+                order: [[ 2, "asc" ]],
+                lengthMenu: [[15, 25, 50, 100, -1], [15, 25, 50, 100, "All"]],
                 responsive: true,
                 autoWidth: false
             });
-
-            $("[id='link-approved']")
-                .bootstrapSwitch({
-                    onColor: 'primary',
-                    onText: 'Yes',
-                    offColor: 'danger',
-                    offText: 'No'
-                })
-                .on('switchChange.bootstrapSwitch', function(event, state) {
-                    console.log(this.value + ' ' + state);
-
-                    if (state == true) {
-                        var link_status = 1;
-                    } else {
-                        var link_status = 0;
-                    }
-
-                    $.ajaxSetup({
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        }
-                    });
-
-                    $.ajax({
-                        method: 'POST',
-                        url: '{{ route('api.approve-community-link') }}',
-                        data: {'link_id': this.value, 'approved': link_status },
-                    });
-                });
         });
     </script>
 @stop

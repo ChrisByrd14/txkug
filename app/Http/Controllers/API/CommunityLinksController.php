@@ -15,7 +15,7 @@ class CommunityLinksController extends Controller
             $data = Request::all();
 
             DB::table('community_links')
-                ->where('id', '=', $data['link_id'])
+                ->where('id', '=', $data['id'])
                 ->update(array('approved' => $data['approved']));
         }
     }

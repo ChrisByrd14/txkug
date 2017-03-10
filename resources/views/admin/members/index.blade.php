@@ -27,7 +27,7 @@
                 <thead class="c-theme-bg">
                 <tr>
                     <th colspan='2' class="all c-font-white">Name</th>
-                    <th class="min-tablet c-font-white c-center">Role</th>
+                    <th class="min-tablet c-font-white c-center">Admin</th>
                     <th class="min-tablet  c-font-white c-center">Joined</th>
                     <th class="min-tablet c-font-white c-center">Attendance</th>
                 </tr>
@@ -43,9 +43,9 @@
                         </td>
                         <td class="c-center">
                             @if ( $member->hasRole('administrator') )
-                                <input type="checkbox" id="has-role" data-size="mini" value="{{ $member->id }}" checked="checked" >
+                                <input type="checkbox" id="user-role-id-{{ $member->id }}" onChange="setUserRole({{ $member->id }});" checked="checked" >
                             @else
-                                <input type="checkbox" id="has-role" data-size="mini" value="{{ $member->id }}">
+                                <input type="checkbox" id="user-role-id-{{ $member->id }}" onChange="setUserRole({{ $member->id }});" >
                             @endif
                         </td>
                         <td class="c-center">
@@ -68,6 +68,33 @@
     <script src="{{ asset('assets/plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('assets/plugins/datatables/extensions/Responsive/js/responsive.bootstrap.min.js') }}" type="text/javascript"></script>
     <script>
+
+        function setUserRole(id) {
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            var chkBox = document.getElementById('user-role-id-' + id);
+
+            if ( chkBox.checked) {
+                var user_has_role = 'administrator';
+            }
+            else {
+                var user_has_role = 'member';
+            }
+//            console.log(user_has_role);
+
+            $.ajax({
+                method: 'POST',
+                url: '{{ route('api.set-role') }}',
+                data: {'id': id, 'role_name': user_has_role },
+            });
+
+        }
+
         $(document).ready(function() {
 
             $('#users-table').DataTable({
@@ -76,34 +103,34 @@
                 autoWidth: false
             });
 
-            $("[id='has-role']")
-                .bootstrapSwitch({
-                    onColor: 'danger',
-                    onText: 'Admin',
-                    offColor: 'primary',
-                    offText: 'User'
-                })
-                .on('switchChange.bootstrapSwitch', function(event, state) {
-                    console.log(this.value + ' ' + state);
+            {{--$("[id='has-role']")--}}
+                {{--.bootstrapSwitch({--}}
+                    {{--onColor: 'danger',--}}
+                    {{--onText: 'Admin',--}}
+                    {{--offColor: 'primary',--}}
+                    {{--offText: 'User'--}}
+                {{--})--}}
+                {{--.on('switchChange.bootstrapSwitch', function(event, state) {--}}
+                    {{--console.log(this.value + ' ' + state);--}}
 
-                    if (state == true) {
-                        var role_id = 2;
-                    } else {
-                        var role_id = 1;
-                    }
+                    {{--if (state == true) {--}}
+                        {{--var role_id = 2;--}}
+                    {{--} else {--}}
+                        {{--var role_id = 1;--}}
+                    {{--}--}}
 
-                    $.ajaxSetup({
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        }
-                    });
+                    {{--$.ajaxSetup({--}}
+                        {{--headers: {--}}
+                            {{--'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')--}}
+                        {{--}--}}
+                    {{--});--}}
 
-                    $.ajax({
-                        method: 'POST',
-                        url: '{{ route('api.set-role') }}',
-                        data: {'user_id': this.value, 'role_id': role_id },
-                    });
-                });
+                    {{--$.ajax({--}}
+                        {{--method: 'POST',--}}
+                        {{--url: '{{ route('api.set-role') }}',--}}
+                        {{--data: {'user_id': this.value, 'role_id': role_id },--}}
+                    {{--});--}}
+                {{--});--}}
             });
     </script>
 @stop
