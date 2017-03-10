@@ -13,10 +13,11 @@
                 </div>
                 <div class="c-post">
                     <a href="{{ $link->link }}" target="_blank">{{ $link->title }}</a>
-                    <div class="c-date">
+                    <div class="small">
                         <a href="\members\community-links\{{ $link->channel->slug }}">
-                            <span class="c-font-{{ $link->channel->color }} c-font-uppercase"> {{ $link->channel->title }} </span>
+                            <span class="c-font-{{ $link->channel->color }} c-font-uppercase c-font-bold"> {{ $link->channel->title }} </span>
                         </a>
+                        &nbsp;<i class="fa fa-circle c-font-10 c-font-grey"></i>&nbsp;
                         {{ $link->updated_at->diffForHumans() }} by <a href="/members/{{ $link->creator->slug }}">{{ $link->creator->name }}</a>
                     </div>
                 </div>
