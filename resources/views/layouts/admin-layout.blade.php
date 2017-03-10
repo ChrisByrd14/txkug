@@ -32,7 +32,12 @@
                 <ul class="c-dropdown-menu">
                     <li><a href="{{ route('admin.events.index') }}">Event List</a></li>
                     <li><a href="{{ route('admin.events.create') }}">Add Event</a></li>
+                    <li><a href="{{ route('admin.events.create') }}">Event Types</a></li>
                 </ul>
+            </li>
+
+            <li class="{{ set_sidebar_active('admin/community-links*') }}">
+                <a href="{{ route('admin.community-links.index') }}">Community Links</a>
             </li>
 
         </ul>

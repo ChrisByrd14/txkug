@@ -21,7 +21,7 @@
                 <input type="text"
                        class="form-control"
                        name="title" id="title"
-                       placeholder="What is the title of your article?"
+                       placeholder="What is the title of your link?"
                        value="{{ old('title') }}"
                        required>
 
