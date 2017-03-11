@@ -26,7 +26,6 @@
                     <tr>
                         <th class="c-font-white c-center">Channel</th>
                         <th class="c-font-white">Title</th>
-                        <th class="none"></th>
                         <th class="c-font-white c-center">Approved</th>
                         <th class="c-font-white">Link</th>
                         <th class="c-font-white">Contributor</th>
@@ -35,15 +34,16 @@
                 </thead>
             <tbody>
             @foreach ($links as $link)
-                <tr>
+                <tr class="{{ $link->approved == 0 ? 'c-font-red-3' : '' }}">
                     <td>{{ $link->channel->title }}</td>
                     <td>{{ $link->title }}</td>
-                    <td>{{ $link->approved }}</td>
                     <td class="c-center">
                         @if ( $link->approved  == 1 )
                             <input type="checkbox" id="link-approved-status" onChange="setLinkApprovalStatus( {{ $link->id }} );" checked="checked" >
+                            <span style="display:none"data-sort="1">{{ $link->approved }}</span>
                         @else
                             <input type="checkbox" id="link-approved-status" onChange="setLinkApprovalStatus( {{ $link->id }} );">
+                            <span style="display:none"data-sort="1">{{ $link->approved }}</span>
                         @endif
                     </td>
                     <td><a href="{{ $link->link }}" target="_blank">{{ $link->link }}</a></td>

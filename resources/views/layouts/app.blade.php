@@ -19,7 +19,6 @@
 
         <link href="{{ asset('assets/plugins/animate/animate.min.css') }}" rel="stylesheet" />
         <link href="{{ asset('assets/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
-        <link href="{{ asset('assets/plugins/bootstrap-switch/css/bootstrap-switch.min.css') }}" rel="stylesheet" />
         <link href="{{ asset('assets/plugins/sweetalert/dist/sweetalert.css') }}" rel="stylesheet" />
 
         @yield('header_scripts')
@@ -59,7 +58,6 @@
         <script src="{{ asset('assets/base/js/scripts/reveal-animate/reveal-animate.js') }}" type="text/javascript"></script>
 
         <script src="{{ asset('assets/plugins/smooth-scroll/jquery.smooth-scroll.js') }}" type="text/javascript"></script>
-        <script src="{{ asset('assets/plugins/bootstrap-switch/js/bootstrap-switch.min.js') }}" type="text/javascript"></script>
         <script src="{{ asset('assets/plugins/sweetalert/dist/sweetalert.min.js') }}" type="text/javascript"></script>
 
         @include('sweet::alert')
