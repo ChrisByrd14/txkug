@@ -26,7 +26,7 @@
             <table id="users-table" class="table table-hover table-striped display responsive nowrap" cellspacing="0" width="100%">
                 <thead class="c-theme-bg">
                 <tr>
-                    <th colspan='2' class="all c-font-white">Name</th>
+                    <th class="all c-font-white">Name</th>
                     <th class="min-tablet c-font-white c-center">Admin</th>
                     <th class="min-tablet  c-font-white c-center">Joined</th>
                     <th class="min-tablet c-font-white c-center">Attendance</th>
@@ -36,16 +36,16 @@
                 @foreach ($members as $member)
                     <tr>
                         <td>
-                            <img class="img-circle c-margin-r-40" src="{{ $member->slack_avatar_32 }}">
-                        </td>
-                        <td>
-                            <a href="{{ route('admin.members.show', $member->slug) }}">{{ $member->last_name }}, {{ $member->first_name }}</a>
+                            <span><img class="img-circle" src="{{ $member->slack_avatar_32 }}"></span>
+                            <a href="{{ route('admin.members.show', $member->slug) }}">{{ $member->name }}</a>
                         </td>
                         <td class="c-center">
                             @if ( $member->hasRole('administrator') )
                                 <input type="checkbox" id="user-role-id-{{ $member->id }}" onChange="setUserRole({{ $member->id }});" checked="checked" >
+                                <div style="display:none"data-sort="1">{{ $member->role_id }}</div>
                             @else
                                 <input type="checkbox" id="user-role-id-{{ $member->id }}" onChange="setUserRole({{ $member->id }});" >
+                                <div style="display:none"data-sort="1">{{ $member->role_id }}</div>
                             @endif
                         </td>
                         <td class="c-center">
