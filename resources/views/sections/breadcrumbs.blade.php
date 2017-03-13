@@ -5,6 +5,5 @@
             <h4 class="c-font-white">{{ $subTitle or null }}</h4>
         </div>
 
-
     </div>
 </div>

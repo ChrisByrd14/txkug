@@ -2,6 +2,8 @@
 
 @section('header_scripts')
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/blitzer/jquery-ui.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/blitzer/theme.min.css" />
 @stop
 
 @section('content')
@@ -15,7 +17,7 @@
     @component('layouts.public-layout')
         @slot('content')
             <div class="row">
-                <div class="col-md-10">
+                <div class="col-md-8 col-md-offset-2">
                     <div id='events-calendar'></div>
                 </div>
             </div>
@@ -30,10 +32,14 @@
     <script>
         $(document).ready(function() {
             $('#events-calendar').fullCalendar({
+                theme: true,
+                prev: 'circle-triangle-w',
+                next: 'circle-triangle-e',
+                prevYear: 'seek-prev',
+                nextYear: 'seek-next',
                 height: 600,
                 header: {
-                    left: 'month,agendaWeek,agendaDay',
-                    center: 'title',
+                    left: 'title',
                     right: 'prev, next today'
                 },
                 navLinks: true, // can click day/week names to navigate views

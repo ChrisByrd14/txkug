@@ -17,6 +17,7 @@ class CreateEventTypesTable extends Migration
             $table->increments('id');
             $table->string('event_type');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -40,6 +40,14 @@
                 <a href="{{ route('admin.community-links.index') }}">Community Links</a>
             </li>
 
+            <li class="c-dropdown {{ set_sidebar_active('admin/settings*') }}">
+                <a href="javascript:;" class="c-toggler">Settings  <span class="c-arrow"></span></a>
+                <ul class="c-dropdown-menu">
+                    <li><a href="{{ route('admin.settings.channels') }}">Channels</a></li>
+                    <li><a href="{{ route('admin.settings.event-types') }}">Event Types</a></li>
+                </ul>
+            </li>
+
         </ul>
     </div>
 

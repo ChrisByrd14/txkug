@@ -13,7 +13,12 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example', require('./components/Example.vue'));
+// Vue.component('example', require('./components/Example.vue'));
+Vue.component('channels', require('./components/admin/settings/Channels.vue'));
+Vue.component('eventTypes', require('./components/admin/settings/EventTypes.vue'));
+
+Vue.prototype.$http = axios;
+
 
 const app = new Vue({
     el: '#app'
