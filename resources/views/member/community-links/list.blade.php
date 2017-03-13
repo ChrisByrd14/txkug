@@ -3,7 +3,6 @@
         @foreach($links as $link)
             <li>
                 <div class="c-image">
-                    {{--<img src="assets/base/img/content/stock/09.jpg" alt="" class="img-responsive"> --}}
                     {!! Form::open(['route' => [ 'members.community-links.votes.store', $link->id ]]) !!}
                         <button class="btn btn-link fa-stack fa-3x" style="top: -.4em;">
                             <i class="fa {{ (Auth::check() && Auth::user()->votedFor($link)) ? 'fa-heart c-theme-color' : 'fa-heart c-font-grey-3' }} fa-stack-2x"></i>

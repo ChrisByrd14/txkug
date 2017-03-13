@@ -56,7 +56,7 @@
     <script>
         $(document).ready(function() {
             $('#events-table').DataTable({
-                order: [[ 0, "asc" ]],
+                order: [[ 0, "desc" ]],
                 lengthMenu: [[25, 50, 100, -1], [25, 50, 100, "All"]],
                 responsive: true,
                 autoWidth: false
