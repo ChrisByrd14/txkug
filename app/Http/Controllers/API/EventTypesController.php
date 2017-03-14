@@ -11,7 +11,7 @@ class EventTypesController extends Controller
 {
     public function index()
     {
-        return $eventTypes = EventType::orderBy('event_type')->withTrashed()->get();
+        return $eventTypes = EventType::orderBy('event_type')->get();
     }
 
     public function store(Request $request)
