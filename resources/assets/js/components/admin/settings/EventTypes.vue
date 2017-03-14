@@ -15,7 +15,8 @@
                             {{ list.event_type }}
                             <span class="btn-group pull-right">
                                 <button @click="showEventType(list.id)" type="button" class="btn btn-primary btn-xs" style="margin-right: 1vh;"> Edit</button>
-                                <button @click="deleteEventType(list.id)" type="button" class="btn btn-danger btn-xs"> Delete</button>
+                                <!--<button v-if="!list.deleted_at" @click="deleteEventType(list.id)" type="button" class="btn btn-danger btn-xs"> Disable</button>-->
+                                <!--<button v-if="list.deleted_at" @click="unDeleteEventType(list.id)" type="button" class="btn btn-success btn-xs"> Enable&nbsp;</button>-->
                             </span>
                         </li>
                     </ul>
@@ -99,6 +100,17 @@
 
             deleteEventType: function (id) {
                 axios.delete('/api/settings/event-types/' + id).then(function () {
+                    this.fetchEventTypesList();
+                }.bind(this));
+            },
+
+            unDeleteEventType: function(id){
+                axios.patch('/api/settings/event-types/' + id + '/restore', {
+                    id: this.eventType.id,
+                    event_type: this.eventType.event_type
+                }).then(function () {
+                    this.eventType.event_type = '';
+                    this.edit = false;
                     this.fetchEventTypesList();
                 }.bind(this));
             }

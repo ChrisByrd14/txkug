@@ -25,4 +25,19 @@ class EventType extends Model
     public function events() {
         return $this->hasMany(Event::class,'event_type_id');
     }
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::deleted(function($event_type)
+        {
+            $event_type->events()->delete();
+        });
+
+        static::restored(function($event_type)
+        {
+            $event_type->events()->withTrashed()->restore();
+        });
+    }
 }

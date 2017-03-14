@@ -6,11 +6,12 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\EventType;
 
+
 class EventTypesController extends Controller
 {
     public function index()
     {
-        return $eventTypes = EventType::orderBy('event_type')->get();
+        return $eventTypes = EventType::orderBy('event_type')->withTrashed()->get();
     }
 
     public function store(Request $request)
@@ -35,5 +36,10 @@ class EventTypesController extends Controller
     public function destroy($id)
     {
         return EventType::destroy($id);
+    }
+
+    public function restore($id)
+    {
+        return EventType::withId($id)->restore();
     }
 }

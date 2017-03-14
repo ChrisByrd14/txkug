@@ -1491,16 +1491,16 @@
         },
         {
             "name": "paragonie/random_compat",
-            "version": "v2.0.9",
+            "version": "v2.0.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/random_compat.git",
-                "reference": "6968531206671f94377b01dc7888d5d1b858a01b"
+                "reference": "634bae8e911eefa89c1abfbf1b66da679ac8f54d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/6968531206671f94377b01dc7888d5d1b858a01b",
-                "reference": "6968531206671f94377b01dc7888d5d1b858a01b",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/634bae8e911eefa89c1abfbf1b66da679ac8f54d",
+                "reference": "634bae8e911eefa89c1abfbf1b66da679ac8f54d",
                 "shasum": ""
             },
             "require": {
@@ -1535,7 +1535,7 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2017-03-03T20:43:42+00:00"
+            "time": "2017-03-13T16:27:32+00:00"
         },
         {
             "name": "predis/predis",
@@ -4385,16 +4385,16 @@
         },
         {
             "name": "spatie/laravel-backup",
-            "version": "4.6.6",
+            "version": "4.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-backup.git",
-                "reference": "e67a7a9459e46fdab6a62fbc5aed36d7b393dfe3"
+                "reference": "36785f0c0a580b83073d62eea0bd813ce9b56b6c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-backup/zipball/e67a7a9459e46fdab6a62fbc5aed36d7b393dfe3",
-                "reference": "e67a7a9459e46fdab6a62fbc5aed36d7b393dfe3",
+                "url": "https://api.github.com/repos/spatie/laravel-backup/zipball/36785f0c0a580b83073d62eea0bd813ce9b56b6c",
+                "reference": "36785f0c0a580b83073d62eea0bd813ce9b56b6c",
                 "shasum": ""
             },
             "require": {
@@ -4447,7 +4447,7 @@
                 "laravel-backup",
                 "spatie"
             ],
-            "time": "2017-02-22T14:34:37+00:00"
+            "time": "2017-03-14T10:07:26+00:00"
         },
         {
             "name": "spatie/temporary-directory",

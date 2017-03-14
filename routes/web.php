@@ -37,6 +37,7 @@ Route::prefix('admin')->middleware('auth:administrator')->group( function() {
 
     Route::name('admin.settings.channels')->get('settings/channels', 'Admin\SettingsController@loadChannels');
     Route::name('admin.settings.event-types')->get('settings/event-types', 'Admin\SettingsController@loadEventTypes');
+
 });
 
 /*
@@ -79,9 +80,13 @@ Route::prefix('api')->middleware('auth:all')->group( function () {
     Route::name('api.set-role')->post('/member', 'API\MemberController@setRole');
 
     Route::name('api.approve-community-link')->post('/community-links', 'API\CommunityLinksController@setApproval');
+//
+//    Route::prefix('settings')->group (function () {
+        Route::name('settings')->resource('/settings/channels', 'API\ChannelsController');
+        Route::name('settings')->resource('/settings/event-types', 'API\EventTypesController');
+        Route::name('settings.event-types.restore')->patch('settings/event-types/{event_type}/restore', 'API\EventTypesController@restore');
+//    })
 
-    Route::name('settings.channels')->resource('/settings/channels', 'API\ChannelsController');
-    Route::name('settings.event-types')->resource('/settings/event-types', 'API\EventTypesController');
 
 });
 
