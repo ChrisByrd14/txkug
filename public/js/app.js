@@ -1891,19 +1891,78 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = {
     data: function data() {
         return {
-            channels: []
+            edit: false,
+            channelsList: [],
+            channel: {
+                id: '',
+                title: '',
+                color: ''
+            }
         };
     },
     mounted: function mounted() {
-        var _this = this;
+        this.fetchChannelsList();
+    },
 
-        axios.get('/api/settings/channels').then(function (response) {
-            return _this.channels = response.data;
-        });
+    methods: {
+        fetchChannelsList: function fetchChannelsList() {
+            var _this = this;
+
+            axios.get('/api/settings/channels').then(function (response) {
+                return _this.channelsList = response.data;
+            });
+        },
+
+        createChannel: function createChannel() {
+            axios.post('/api/settings/channels', {
+                channel: this.channel.title
+            }).then(function () {
+                this.channel.title = '';
+                this.edit = false;
+                this.fetchChannelsList();
+            }.bind(this));
+        }
+
     }
 };
 
@@ -19255,12 +19314,126 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', _vm._l((_vm.channels), function(channel) {
-    return _c('ul', [_c('li', [_c('i', {
-      staticClass: "fa fa-square c-font-red"
-    }), _vm._v("\n            " + _vm._s(channel.title) + "\n        ")])])
-  }))
-},staticRenderFns: []}
+  return _c('div', [_vm._m(0), _vm._v(" "), _c('div', {
+    staticClass: "c-content-divider c-divider-sm c-theme-bg"
+  }), _vm._v(" "), _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-6"
+  }, [(_vm.channelsList) ? _c('div', [_c('ul', {
+    staticClass: "list-group"
+  }, _vm._l((_vm.channelsList), function(channel) {
+    return _c('li', {
+      staticClass: "list-group-item"
+    }, [_c('i', {
+      staticClass: "fa fa-square",
+      style: ({
+        color: '#' + channel.color
+      })
+    }), _vm._v("\n                        " + _vm._s(channel.title) + "\n                        "), _c('span', {
+      staticClass: "btn-group pull-right"
+    }, [_c('button', {
+      staticClass: "btn btn-primary btn-xs",
+      staticStyle: {
+        "margin-right": "1vh"
+      },
+      attrs: {
+        "type": "button"
+      },
+      on: {
+        "click": function($event) {
+          _vm.showChannel(channel.id)
+        }
+      }
+    }, [_vm._v(" Edit")])])])
+  }))]) : _vm._e()]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-6"
+  }, [_c('form', {
+    staticClass: "form-inline",
+    attrs: {
+      "action": "#"
+    },
+    on: {
+      "submit": function($event) {
+        $event.preventDefault();
+        _vm.edit ? _vm.updateChannel(_vm.channel.id) : _vm.createChannel()
+      }
+    }
+  }, [_c('div', {
+    staticClass: "input-group"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.channel.title),
+      expression: "channel.title"
+    }],
+    staticClass: "form-control",
+    staticStyle: {
+      "width": "250px"
+    },
+    attrs: {
+      "type": "text",
+      "name": "title",
+      "placeholder": "Channel Name ..."
+    },
+    domProps: {
+      "value": _vm._s(_vm.channel.title)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.channel.title = $event.target.value
+      }
+    }
+  }), _vm._v(" "), _c('span', {
+    staticClass: "input-group-btn"
+  }, [_c('button', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (!_vm.edit),
+      expression: "!edit"
+    }],
+    staticClass: "btn btn-primary",
+    attrs: {
+      "type": "submit"
+    }
+  }, [_vm._v("Add")]), _vm._v(" "), _c('button', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.edit),
+      expression: "edit"
+    }],
+    staticClass: "btn btn-success",
+    attrs: {
+      "type": "submit"
+    }
+  }, [_vm._v("Save")]), _vm._v(" "), _c('button', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.edit),
+      expression: "edit"
+    }],
+    staticClass: "btn btn-danger",
+    attrs: {
+      "type": "button"
+    },
+    on: {
+      "click": function($event) {
+        _vm.cancelUpdateChannel()
+      }
+    }
+  }, [_vm._v("Cancel")])])])])])])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "c-content-title-1"
+  }, [_c('h3', {
+    staticClass: "c-font-uppercase c-font-bold"
+  }, [_vm._v("Event Types")])])
+}]}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
@@ -19284,7 +19457,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "list-group"
   }, _vm._l((_vm.eventTypesList), function(list) {
     return _c('li', {
-      staticClass: "list-group-item c-bg-grey-1"
+      staticClass: "list-group-item"
     }, [_vm._v("\n                        " + _vm._s(list.event_type) + "\n                        "), _c('span', {
       staticClass: "btn-group pull-right"
     }, [_c('button', {
