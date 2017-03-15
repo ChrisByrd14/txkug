@@ -22,10 +22,10 @@ class Channel extends Model {
         ];
     }
 
-    public function getRouteKeyName()
-    {
-        return 'slug';
-    }
+//    public function getRouteKeyName()
+//    {
+//        return 'slug';
+//    }
 
     protected $fillable = [
         'title',

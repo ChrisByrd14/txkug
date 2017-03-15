@@ -10,7 +10,7 @@
             <div class="col-md-6">
                 <div v-if="eventTypesList">
                     <ul class="list-group">
-                        <li class="list-group-item c-bg-grey-1"
+                        <li class="list-group-item"
                             v-for="list in eventTypesList">
                             {{ list.event_type }}
                             <span class="btn-group pull-right">

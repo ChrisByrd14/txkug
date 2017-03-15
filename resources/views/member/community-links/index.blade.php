@@ -1,12 +1,24 @@
 @extends('layouts.app')
 
+@section('header_scripts')
+    <style>
+        .fa-circle-o:hover:before {
+            content: "\f111"
+        }
+    </style>
+@stop
+
 @section('content')
 
     @component('sections.breadcrumbs')
         @slot('title')
             Community Links
+        @endslot
+        @slot('subTitle')
             @if($channel->exists)
-                <span>&mdash; {{ $channel->title }}</span>
+                {{ $channel->title }} Channel
+            @else
+                All Channels
             @endif
         @endslot
 
@@ -15,18 +27,20 @@
     @component('layouts.public-layout')
         @slot('content')
             <div class="row">
-                <div class="col-md-2">
+                <div class="col-md-3">
                     <h3 class="c-font-uppercase c-font-bold">Channels</h3>
-                    <ul class="c-content-list-1 c-theme c-separator-dot">
-                        <li class="c-bg-before-black">
+                    <ul class="list-group">
+                        <li class="list-group-item">
                             <a href="/members/community-links">
-                                All Channels
+                                <i class="fa fa-circle-o c-font-bold" style="color: #000000;"></i>
+                                <span class="c-font-grey-3">All</span>
                             </a>
                         </li>
                         @foreach ($channels as $channel)
-                            <li class="c-bg-before-{{ $channel->color }}">
-                                <a href="/members/community-links/{{ $channel->slug }}" class="c-theme-link">
-                                    {{ $channel->title }}
+                            <li class="list-group-item">
+                                <i class="fa fa-circle-o c-font-bold" style="color: #{{ $channel->color }};"></i>
+                                <a href="/members/community-links/{{ $channel->slug }}">
+                                    <span class="c-font-grey-3">{{ $channel->title }}</span>
                                 </a>
                             </li>
                         @endforeach
@@ -48,7 +62,7 @@
                     {!! $links->appends(request()->query())->links('vendor.pagination.bootstrap-4') !!}
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-3">
                     @include('member.community-links.create')
                 </div>
             </div>
